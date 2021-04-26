@@ -1,15 +1,12 @@
 package org.example.steps;
 
 import org.example.abilities.AuthoriseHimself;
-import org.example.data.SimpleTask;
-import org.openqa.selenium.By;
+import org.example.actions.Navigate;
 
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import net.serenitybdd.screenplay.Actor;
-import net.serenitybdd.screenplay.actions.Click;
-import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 
@@ -27,11 +24,6 @@ public class PreconditionSteps {
 
     @And("{actor} is on Login page")
     public void heIsOnLoginPage(Actor user) {
-        user.wasAbleTo(
-            Open.url("https://todoist.com"),
-            Click.on(By.cssSelector("[href=\"/users/showlogin\"]"))
-        );
-
-        user.wasAbleTo(new SimpleTask());
+        user.wasAbleTo(Navigate.toLoginPage());
     }
 }
