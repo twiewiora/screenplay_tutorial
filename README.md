@@ -1,2 +1,2 @@
-# screenplay_tutorial
+# Screenplay tutorial
 Screenplay BDD tutorial
