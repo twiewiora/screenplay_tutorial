@@ -1,4 +1,4 @@
-package org.example.steps;
+package org.example.bdd.steps;
 
 import static org.example.asserts.Should.haveACookie;
 

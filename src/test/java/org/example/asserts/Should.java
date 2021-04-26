@@ -15,4 +15,8 @@ public class Should {
         return new QuestionConsequence("Cookie is there!", new BrowserCookie(), Matchers.notNullValue());
     }
 
+    public static Consequence notHaveACookie() {
+        return new QuestionConsequence("Cookie is not there!", new BrowserCookie(), Matchers.nullValue());
+    }
+
 }

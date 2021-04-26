@@ -10,7 +10,11 @@ import net.serenitybdd.screenplay.Ability;
 @AllArgsConstructor
 public class AuthoriseHimself implements Ability {
 
-    private final String email;
-    private final String password;
+    private String email;
+    private String password;
 
+    @Override
+    public String toString() {
+        return String.format("authorise himself using: %s / %s", email, password);
+    }
 }

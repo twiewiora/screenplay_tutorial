@@ -1,4 +1,4 @@
-package org.example.steps;
+package org.example.bdd.steps;
 
 import java.util.List;
 import java.util.Map;

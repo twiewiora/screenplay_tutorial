@@ -1,4 +1,4 @@
-package org.example.steps;
+package org.example.bdd.steps;
 
 import org.example.abilities.AuthoriseHimself;
 import org.example.data.credentials.CredentialsGenerator;

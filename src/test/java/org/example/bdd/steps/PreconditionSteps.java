@@ -1,7 +1,6 @@
-package org.example.steps;
+package org.example.bdd.steps;
 
 import org.example.abilities.AuthoriseHimself;
-import org.example.actions.Navigate;
 
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -9,6 +8,8 @@ import io.cucumber.java.en.Given;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
+
+import static org.example.actions.Navigate.*;
 
 public class PreconditionSteps {
 
@@ -24,6 +25,11 @@ public class PreconditionSteps {
 
     @And("{actor} is on Login page")
     public void heIsOnLoginPage(Actor user) {
-        user.wasAbleTo(Navigate.toLoginPage());
+        user.wasAbleTo(toLoginPage());
+    }
+
+    @Given("{actor} is on Main page")
+    public void userIsOnMainPage(Actor user) {
+        user.wasAbleTo(toLoginPage(), performUserLogin());
     }
 }

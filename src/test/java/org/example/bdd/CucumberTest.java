@@ -1,4 +1,4 @@
-package org.example;
+package org.example.bdd;
 
 import org.junit.runner.RunWith;
 
@@ -8,7 +8,7 @@ import net.serenitybdd.cucumber.CucumberWithSerenity;
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
         features = "classpath:features",
-        glue = "org.example.steps"
+        glue = "org.example.bdd.steps"
 )
 public class CucumberTest {
 }
