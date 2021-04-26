@@ -6,13 +6,11 @@ import org.hamcrest.Matchers;
 import io.cucumber.java.en.Then;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.QuestionConsequence;
-import net.serenitybdd.screenplay.actors.OnStage;
 
 public class VerificationSteps {
 
-    @Then("{word} is logged in")
-    public void heIsLoggedIn(String name) {
-        Actor user = OnStage.theActorCalled(name);
+    @Then("{actor} is logged in")
+    public void heIsLoggedIn(Actor user) {
 
         //robi się tak, żeby było widoczne na raporcie
         QuestionConsequence hasACookie = new QuestionConsequence("Cookie is there!", new BrowserCookie(),
