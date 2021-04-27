@@ -3,11 +3,10 @@ package org.example.tasks;
 import lombok.RequiredArgsConstructor;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
-import net.serenitybdd.screenplay.actions.Click;
-import net.serenitybdd.screenplay.actions.Enter;
-import net.serenitybdd.screenplay.actions.MoveMouse;
 import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.annotations.Step;
+import org.example.pageobjects.CreateProjectFormObject;
+import org.example.pageobjects.ProjectsListObject;
 
 @RequiredArgsConstructor
 public class CreateNewProject implements Task {
@@ -22,10 +21,9 @@ public class CreateNewProject implements Task {
     @Step("dowolna nazwa kroku, wykonana przez: {0}, tworzy projekt: #projectName")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                MoveMouse.to(createProjectLink),
-                Click.on(createProjectLink),
-                Enter.theValue(projectName).into(projectNameInput),
-                Click.on(addButton)
+            ProjectsListObject.clickNewProjectLink(),
+            CreateProjectFormObject.fillWith(projectName),
+            CreateProjectFormObject.submit()
         );
     }
 }

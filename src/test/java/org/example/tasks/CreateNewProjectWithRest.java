@@ -6,7 +6,7 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.rest.interactions.Post;
 import org.example.abilities.AuthoriseHimself;
-import org.example.restapi.ProjectRequest;
+import org.example.data.restapi.ProjectRequest;
 
 @RequiredArgsConstructor
 public class CreateNewProjectWithRest implements Task {

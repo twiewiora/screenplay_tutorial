@@ -1,4 +1,4 @@
-package org.example.restapi;
+package org.example.data.restapi;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

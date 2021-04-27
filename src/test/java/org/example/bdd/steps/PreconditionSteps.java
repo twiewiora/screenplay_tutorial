@@ -14,7 +14,7 @@ import net.serenitybdd.screenplay.rest.questions.LastResponse;
 import org.example.abilities.AuthoriseHimself;
 import org.example.actions.Navigate;
 import org.example.actions.Project;
-import org.example.restapi.ProjectResponse;
+import org.example.data.restapi.ProjectResponse;
 
 import static org.example.data.Notes.PROJECT_ID;
 
