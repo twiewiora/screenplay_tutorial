@@ -1,16 +1,12 @@
 package org.example.tasks;
 
-import net.serenitybdd.screenplay.questions.Visibility;
-import net.serenitybdd.screenplay.targets.Target;
-import net.serenitybdd.screenplay.waits.Wait;
-import org.example.abilities.AuthoriseHimself;
-import org.hamcrest.Matchers;
-import org.openqa.selenium.By;
-
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
+import net.serenitybdd.screenplay.targets.Target;
+import org.example.abilities.AuthoriseHimself;
+import org.example.actions.Navigate;
 
 public class LoginUsingCredentials implements Task {
 
@@ -28,11 +24,6 @@ public class LoginUsingCredentials implements Task {
                         Enter.theValue(password).into(passwordInput),
                 Click.on(loginButton))
         );
-        actor.wasAbleTo(
-            Wait.until(
-                Visibility.of(By.cssSelector("#loading")).asABoolean(),
-                Matchers.equalTo(false)
-            ).forNoLongerThan(5).seconds()
-        );
+        actor.wasAbleTo(Navigate.waitForLoaderToClose());
     }
 }
