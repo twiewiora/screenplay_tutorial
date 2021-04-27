@@ -12,6 +12,7 @@ public class AuthoriseHimself implements Ability {
 
     private String email;
     private String password;
+    private String token;
 
     @Override
     public String toString() {

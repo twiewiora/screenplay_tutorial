@@ -26,10 +26,22 @@ public class ParameterDefs {
         return credentialsGenerator.getAccount();
     }
 
+    @ParameterType("token")
+    public AuthoriseHimself token(String value) {
+        CredentialsGenerator credentialsGenerator = new StaticCredentialsGenerator();
+        return credentialsGenerator.getAccount();
+    }
+
     @ParameterType("project")
     public String projectName(String value) {
         TestDataGenerator testDataGenerator = getGenerator();
         return testDataGenerator.getProjectName();
+    }
+
+    @ParameterType("task")
+    public String taskContent(String value) {
+        TestDataGenerator testDataGenerator = getGenerator();
+        return testDataGenerator.getTaskContent();
     }
 
     private TestDataGenerator getGenerator() {

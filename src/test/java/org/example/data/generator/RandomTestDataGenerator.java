@@ -12,6 +12,11 @@ public class RandomTestDataGenerator implements TestDataGenerator {
     }
 
     @Override
+    public String getTaskContent() {
+        return generator.gameOfThrones().quote();
+    }
+
+    @Override
     public boolean isTypeOf(String type) {
         return "random".equals(type);
     }

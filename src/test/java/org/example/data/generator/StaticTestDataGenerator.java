@@ -8,6 +8,11 @@ public class StaticTestDataGenerator implements TestDataGenerator {
     }
 
     @Override
+    public String getTaskContent() {
+        return "Static task content";
+    }
+
+    @Override
     public boolean isTypeOf(String type) {
         return "static".equals(type);
     }
