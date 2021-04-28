@@ -1,28 +1,27 @@
 package org.example.tasks;
 
-import io.restassured.http.ContentType;
 import lombok.RequiredArgsConstructor;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
-import net.serenitybdd.screenplay.rest.interactions.Post;
-import org.example.abilities.AuthoriseHimself;
-import org.example.data.restapi.TaskRequest;
+import net.serenitybdd.screenplay.actions.Click;
+import net.serenitybdd.screenplay.actions.Enter;
+import net.serenitybdd.screenplay.targets.Target;
 
 @RequiredArgsConstructor
 public class CreateNewTask implements Task {
 
     private final String taskContent;
-    private final long projectId;
+
+    private static Target addButton = Target.the("create task").locatedBy("[class=\"plus_add_button\"]");
+    private static Target taskContentInput = Target.the("fill task content").locatedBy("[data-text=\"true\"]");
+    private static Target submitButton = Target.the("submit task").locatedBy("[class=\"ist_button ist_button_red\"]");
 
     @Override
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-            Post.to("/tasks").with(req -> {
-                req.headers("Authorization", actor.usingAbilityTo(AuthoriseHimself.class).getToken());
-                req.contentType(ContentType.JSON);
-                req.body(new TaskRequest(taskContent, projectId));
-                return req;
-            })
+            Click.on(addButton),
+            Enter.theValue(taskContent).into(taskContentInput),
+            Click.on(submitButton)
         );
     }
 }

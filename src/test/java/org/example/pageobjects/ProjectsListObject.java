@@ -4,6 +4,7 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.MoveMouse;
 import net.serenitybdd.screenplay.targets.Target;
+import org.openqa.selenium.By;
 
 public class ProjectsListObject {
 
@@ -14,5 +15,12 @@ public class ProjectsListObject {
             MoveMouse.to(createProjectLink),
             Click.on(createProjectLink)
         );
+    }
+
+    public static Task selectProjectById(long id) {
+        String selector = String.format("[data-id=\"%d\"]", id);
+        Target project = Target.the("project to select").located(By.cssSelector(selector));
+
+        return Task.where("{0} select project", Click.on(project));
     }
 }

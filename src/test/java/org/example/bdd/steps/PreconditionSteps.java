@@ -15,6 +15,8 @@ import org.example.abilities.AuthoriseHimself;
 import org.example.actions.Navigate;
 import org.example.actions.Project;
 import org.example.data.restapi.ProjectResponse;
+import org.example.facts.HasAuthorise;
+import org.example.pageobjects.LoaderObject;
 
 import static org.example.data.Notes.PROJECT_ID;
 
@@ -27,7 +29,7 @@ public class PreconditionSteps {
 
     @Given("{actor} has an {userAccount}")
     public void userHasAnAccount(Actor user, AuthoriseHimself authorise) {
-        user.can(authorise);
+        user.has(new HasAuthorise(authorise));
     }
 
     @And("{actor} is on Login page")
@@ -50,6 +52,19 @@ public class PreconditionSteps {
         user.wasAbleTo(SilentTask.where(
             Project.createNewProjectWithRest(projectName)
         ));
+
+        Response response = user.asksFor(LastResponse.received());
+        ProjectResponse project = response.then().extract().body().as(ProjectResponse.class);
+        user.remember(PROJECT_ID, project.getId());
+    }
+
+    @Given("{actor} has the {projectName} created")
+    public void userHasTheProjectCreated(Actor user, String projectName) {
+        user.wasAbleTo(SilentTask.where(
+            Project.createNewProjectWithRest(projectName),
+            LoaderObject.waitForLoaderToClose()
+            )
+        );
 
         Response response = user.asksFor(LastResponse.received());
         ProjectResponse project = response.then().extract().body().as(ProjectResponse.class);

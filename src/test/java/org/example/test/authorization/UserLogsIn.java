@@ -1,4 +1,4 @@
-package org.example.test;
+package org.example.test.authorization;
 
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.serenitybdd.screenplay.Actor;
@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
 @RunWith(SerenityRunner.class)
-public class UserLogsInTest {
+public class UserLogsIn {
 
     @Managed
     WebDriver driver;

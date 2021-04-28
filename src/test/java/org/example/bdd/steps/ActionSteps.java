@@ -31,6 +31,15 @@ public class ActionSteps {
         user.remember(TASK_CONTENT, taskContent);
         long projectId = user.recall(PROJECT_ID);
 
-        user.attemptsTo(Project.createTask(taskContent, projectId));
+        user.attemptsTo(Project.createTaskWithRest(taskContent, projectId));
+    }
+
+    @When("{actor} creates new {taskContent} in the project")
+    public void heCreatesNewTaskInTheProject(Actor user, String taskContent) {
+        user.remember(TASK_CONTENT, taskContent);
+        user.attemptsTo(
+            Project.selectProject(),
+            Project.createTask(taskContent)
+        );
     }
 }

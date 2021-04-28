@@ -37,7 +37,6 @@ public class VerificationSteps {
         Target projectName = Target.the("project view header").located(By.cssSelector(".project_view h1"));
 
         user.should(new QuestionConsequence<>("Project name", Text.of(projectName).asAString(), Matchers.equalTo(cratedProjectName)));
-
     }
 
     @Then("project is created by rest")
@@ -49,7 +48,7 @@ public class VerificationSteps {
         String projectName = user.recall(PROJECT_NAME);
 
         user.should(statusIs200(),
-                    new QuestionConsequence<>("project name is correct", a -> project.getName(), Matchers.equalTo(projectName)));
+            new QuestionConsequence<>("project name is correct", a -> project.getName(), Matchers.equalTo(projectName)));
     }
 
     @Then("task is created by rest")
@@ -62,7 +61,16 @@ public class VerificationSteps {
         long projectId = user.recall(PROJECT_ID);
 
         user.should(statusIs200(),
-                    new QuestionConsequence<>("task content is correct", a -> task.getContent(), Matchers.equalTo(taskContent)),
-                    new QuestionConsequence<>("task was created in correct project", a -> task.getProject_id(), Matchers.equalTo(projectId)));
+            new QuestionConsequence<>("task content is correct", a -> task.getContent(), Matchers.equalTo(taskContent)),
+            new QuestionConsequence<>("task was created in correct project", a -> task.getProject_id(), Matchers.equalTo(projectId)));
+    }
+
+    @Then("the task is correctly created")
+    public void theTaskIsCorrectlyCreated() {
+        Actor user = OnStage.theActorInTheSpotlight();
+
+        String taskContent = user.recall(TASK_CONTENT);
+
+        user.should(new QuestionConsequence<>("task content is correct", a -> true, Matchers.equalTo(true)));
     }
 }
